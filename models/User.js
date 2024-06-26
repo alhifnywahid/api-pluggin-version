@@ -2,15 +2,19 @@
 const mongoose = require("mongoose");
 
 const AddressSchema = new mongoose.Schema({
-	kota: {
+	dusun: {
 		type: String,
 		required: false,
 	},
-	kabupaten: {
+	desa: {
 		type: String,
 		required: false,
 	},
 	kecamatan: {
+		type: String,
+		required: false,
+	},
+	kabupaten: {
 		type: String,
 		required: false,
 	},
@@ -22,7 +26,7 @@ const AddressSchema = new mongoose.Schema({
 		type: String,
 		required: false,
 	},
-	alamat_lengkap: {
+	alamat_detail: {
 		type: String,
 		required: false,
 	},
@@ -46,6 +50,7 @@ const UserSchema = new mongoose.Schema(
 		phone_number: {
 			type: String,
 			required: false,
+      default: null,
 		},
 		profile_pic: {
 			type: String,

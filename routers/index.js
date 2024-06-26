@@ -29,6 +29,7 @@ const loadRouters = (app) => {
 
   app.get('/', (req, res) => {
     res.json(routes);
+    // res.render('index', { title: 'Home Page', message: routes });
   });
 };
 
