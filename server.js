@@ -4,17 +4,9 @@ const express = require("express");
 const cors = require("cors");
 const loadRouters = require("./routers");
 const connectDB = require("./config/db");
-// const morgan = require("morgan");
 
 const app = express();
-
-// morgan.token('type', function (req, res) { return req.headers['content-type']; });
-
-// const customFormat = ':method :url :status :response-time ms - :res[content-length]';
-// app.use(morgan(customFormat));
-
 app.set("view engine", "ejs");
-app.set("views", "views");
 
 app.get("/ejs", (req, res) => {
 	res.render("index", { title: "Home Page", message: "Welcome to Express with EJS!" });
@@ -31,4 +23,10 @@ loadRouters(app);
 
 app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}`);
+});
+
+app.use((err, req, res, next) => {
+	console.log(req)
+	console.error(err.stack);
+	res.status(500).send('Something broke!');
 });
