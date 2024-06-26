@@ -16,7 +16,6 @@
     "express": "^4.19.2",
     "fs": "^0.0.1-security",
     "mongoose": "^8.4.4",
-    "morgan": "^1.10.0",
     "path": "^0.12.7",
     "request": "^2.88.2",
     "yt-search": "^2.11.0",
