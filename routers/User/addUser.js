@@ -1,26 +1,30 @@
-const User = require('../../models/User');
+const User = require("../../models/User");
 
 exports.routes = {
-  name: "addUser",
-  category: "User",
-  path: "/api/adduser",
-  parameter: ["name", "email"],
-  example: {
-    name: "John Doe",
-    email: "john@example.com"
-  },
-  method: "post",
-  execution: async (req, res) => {
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email
-    });
+	name: "ADD USER",
+	category: "User",
+	path: "/api/user",
+	parameter: ["name", "email", "password"],
+	example: {
+		name: "John Doe",
+		email: "john@example.com",
+		password: "@JohnDoe123",
+	},
+	method: "post",
+	execution: async (req, res) => {
+		const ex = await User.findOne({ email: req.body.email });
+		if (ex) return ResponseFalse(res, "Email tersebut sudah terdaftar!");
+		const user = new User({
+			name: req.body.name,
+			email: req.body.email,
+			password: req.body.password,
+		});
 
-    try {
-      const newUser = await user.save();
-      res.status(201).json(newUser);
-    } catch (err) {
-      res.status(400).json({ message: err.message });
-    }
-  },
+		try {
+			const newUser = await user.save();
+			ResponseTrue(res, newUser);
+		} catch (err) {
+			ResponseFalse(res, err.message);
+		}
+	},
 };

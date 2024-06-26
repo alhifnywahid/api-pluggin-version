@@ -10,11 +10,10 @@ exports.routes = {
 	execution: async (req, res) => {
 		try {
 			const products = await fetch("https://gist.githubusercontent.com/alhifnywahid/0d58fcea7f29b0a7dbb7526156189803/raw/57916552249b834c1b35804473f06fdee33615a8/blibli.json");
-			const json = await products.json();
-      console.log(global.creator)
-			res.status(200).json({ status: true, creator: global.creator, data: json });
+			const result = await products.json();
+			ResponseTrue(res, result);
 		} catch (err) {
-			res.status(500).json({ status: true, creator: global.creator, message: err.message });
+			ResponseTrue(res, err.message);
 		}
 	},
 };
