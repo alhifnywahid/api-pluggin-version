@@ -28,8 +28,8 @@ const loadRouters = (app) => {
   });
 
   app.get('/', (req, res) => {
-    res.json(routes);
-    // res.render('index', { title: 'Home Page', message: routes });
+    // res.json(routes);
+    res.render('index', { title: 'Home Page', message: "Halo Bro", routes });
   });
 };
 
