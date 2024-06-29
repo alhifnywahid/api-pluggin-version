@@ -1,7 +1,7 @@
 const User = require("../../models/User");
 
 exports.routes = {
-	name: "GET USER BY ID",
+	name: "Get User By Id",
 	category: "User",
 	path: "/api/user/:id",
 	parameter: ["id"],
