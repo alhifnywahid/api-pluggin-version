@@ -5,17 +5,14 @@ const loadRouters = require("./routers");
 const path = require("path");
 const port = process.env.PORT || 3000;
 const app = express();
-loadRouters(app);
 
 app.use(express.json());
 app.use(cors());
 
+loadRouters(app);
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
-// app.get("/ejs", (req, res) => {
-// 	res.render("index", { title: "Home Page", message: "Welkombek again!" });
-// });
 
 app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}`);
