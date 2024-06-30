@@ -8,6 +8,7 @@ exports.routes = {
 	example: {},
 	method: "post",
 	execution: async (req, res) => {
+		console.log(req.body);
 		if (!req.body.email) return ResponseFalse(res, "Email harus diisi!");
 		if (!req.body.password) return ResponseFalse(res, "Password harus diisi!");
 		try {
