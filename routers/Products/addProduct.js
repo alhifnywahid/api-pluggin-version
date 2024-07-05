@@ -14,7 +14,7 @@ exports.routes = {
 			const svProduct = await product.save();
 			ResponseTrue(res, svProduct.title);
 		} catch (err) {
-			ResponseTrue(res, err.message);
+			ResponseFalse(res, err.message);
 		}
 	},
 };

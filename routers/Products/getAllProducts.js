@@ -30,7 +30,7 @@ exports.routes = {
 				ResponseTrue(res, json);
 			}
 		} catch (err) {
-			ResponseTrue(res, err.message);
+			ResponseFalse(res, err.message);
 		}
 	},
 };
