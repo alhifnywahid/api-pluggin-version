@@ -10,9 +10,16 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+loadRouters(app);
+
 // app.use(apikey);
 
-loadRouters(app);
+app.get("/authorization", apikey,  (req, res) => {
+	res.json({
+		authorization: true
+	})
+})
+
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
