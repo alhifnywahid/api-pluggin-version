@@ -3,7 +3,7 @@ const Product = require("../../models/Product");
 exports.routes = {
 	name: "Get Single Product",
 	category: "Products",
-	path: "/api/product/id/",
+	path: "/api/product/:id",
 	parameter: [],
 	example: {},
 	method: "get",
