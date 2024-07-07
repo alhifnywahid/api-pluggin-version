@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const apikey = require("../middleware/authApiKey");
 
 const loadRouters = (app) => {
 	const routes = [];
@@ -12,6 +13,12 @@ const loadRouters = (app) => {
 				if (file.endsWith(".js")) {
 					const routerPath = path.join(folderPath, file);
 					const { routes: routeConfig } = require(routerPath);
+
+					if (routeConfig.authorization) { 
+						app[routeConfig.method](routeConfig.path, apikey, routeConfig.execution);
+					} else { 
+						app[routeConfig.method](routeConfig.path, routeConfig.execution);
+					}
 
 					app[routeConfig.method](routeConfig.path, routeConfig.execution);
 					routes.push({
