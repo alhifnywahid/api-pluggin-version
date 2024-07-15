@@ -1,4 +1,3 @@
-// models/User.js
 const mongoose = require("mongoose");
 
 const AddressSchema = new mongoose.Schema({
@@ -32,6 +31,19 @@ const AddressSchema = new mongoose.Schema({
 	},
 });
 
+const CartItemSchema = new mongoose.Schema({
+	productId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "Product",
+		required: true,
+	},
+	quantity: {
+		type: Number,
+		required: true,
+		default: 1,
+	},
+});
+
 const UserSchema = new mongoose.Schema(
 	{
 		name: {
@@ -58,14 +70,7 @@ const UserSchema = new mongoose.Schema(
 			default: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
 		},
 		alamat: [AddressSchema],
-		cart: [
-			{
-				productId: {
-					type: mongoose.Schema.Types.ObjectId,
-					ref: "Product",
-				},
-			},
-		],
+		cart: [CartItemSchema],
 		orders: [
 			{
 				productId: {
