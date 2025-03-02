@@ -34,6 +34,8 @@ const loadRouters = (app) => {
 		}
 	});
 
+	console.log(routes)
+
 	app.get("/", (req, res) => {
 		res.render("index", { title: "Home Page", message: "Halo Bro", routes });
 	});
